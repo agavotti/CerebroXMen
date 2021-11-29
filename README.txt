@@ -1,5 +1,5 @@
 ﻿- Repositorio github:
-	https://github.com/agavotti/CerebroXMenAPI
+	https://github.com/agavotti/CerebroXMen
 
 - Modo de ejecuccion:
 	Request a http://cerebroxmenapi.azurewebsites.net/mutant con metodo POST.
