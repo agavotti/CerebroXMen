@@ -178,6 +178,24 @@ namespace CerebroXMenAPI.app_data
 
             return iStats;
         }
+        internal List<IGenInfo> GetAll()
+        {
+            List<Gen> listGenes = Gen.LstGenes(_cn);
+            List<IGenInfo> listGenesInfo = new List<IGenInfo>();
+            foreach(Gen gen in listGenes)
+            {
+                IGenInfo iGenInfo = new IGenInfo()
+                {
+                    Dna = gen.ADN.Split(','),
+                    EsMutante = gen.EsMutante,
+                    FechaAlta = gen.FechaAlta
+                };
+                listGenesInfo.Add(iGenInfo);
+            }
+            
+
+            return listGenesInfo;
+        }
     }
 }
 

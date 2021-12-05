@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Http;
 using CerebroXMenAPI.app_data;
 using System.Web.Http.Description;
+using System.Collections.Generic;
 
 namespace CerebroXMenAPI.Controllers
 {
@@ -52,6 +53,24 @@ namespace CerebroXMenAPI.Controllers
                 {
                     return StatusCode(HttpStatusCode.Forbidden);
                 }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return BadRequest();
+            }
+        }
+
+
+        [Route("all")]
+        [ResponseType(typeof(List<IStats>))]
+        public IHttpActionResult GetAll()
+        {
+            try
+            {
+                List<IGenInfo> iGenInfo = _mutanteService.GetAll();
+
+                return Ok(iGenInfo);
+
             }
             catch (UnauthorizedAccessException)
             {
