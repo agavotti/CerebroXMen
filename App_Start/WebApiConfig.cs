@@ -12,6 +12,7 @@ namespace CerebroXMenAPI
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web
+            config.EnableCors();
             IStorageContext m_clsStorageContext = new DBStorageContext(ConfigurationManager.ConnectionStrings["CSSQLServerCerebroDB"].ConnectionString);
 
             // Rutas de API web

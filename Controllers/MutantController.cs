@@ -5,9 +5,12 @@ using System.Web.Http;
 using CerebroXMenAPI.app_data;
 using System.Web.Http.Description;
 using System.Collections.Generic;
+using System.Web.Http.Cors;
+
 
 namespace CerebroXMenAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers:"*", methods:"*")]
     public class MutantController : ApiController
     {
         private readonly MutanteService _mutanteService;
