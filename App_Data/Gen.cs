@@ -245,6 +245,21 @@ namespace CerebroXMenAPI.app_data
             CacheFactory.GetDefaultCache().Agregar("LstGenes", genes, TimeSpan.FromMinutes(5));
         }
 
+        public static Clase Get(ConexionSQLServerAutogestionWeb Cn, int ID)
+        {
+            List<Clase> genes = CacheFactory.GetDefaultCache().ObtenerValor<List<Clase>>("LstGenes");
+            if (genes == null)
+            {
+                var q = new QueryBD<CustomCondicionBusqueda>(Tabla);
+                genes = Recuperar(Cn, q);
+
+                CacheFactory.GetDefaultCache().Agregar("LstGenes", genes, TimeSpan.FromMinutes(30));
+            }
+
+            Clase gen = genes.Find(g => g.ID == ID);
+            return gen;
+        }
+
         public static List<Clase> LstGenes(ConexionSQLServerAutogestionWeb Cn)
         {
             List<Clase> genes = CacheFactory.GetDefaultCache().ObtenerValor<List<Clase>>("LstGenes");

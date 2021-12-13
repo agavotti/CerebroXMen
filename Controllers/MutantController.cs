@@ -63,14 +63,14 @@ namespace CerebroXMenAPI.Controllers
             }
         }
 
-
-        [Route("all")]
+        [HttpGet]
+        [Route("mutant/{ID:int}")]
         [ResponseType(typeof(List<IStats>))]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult GetByID(int ID)
         {
             try
             {
-                List<IGenInfo> iGenInfo = _mutanteService.GetAll();
+                IGenInfo iGenInfo = _mutanteService.GetByID(ID);
 
                 return Ok(iGenInfo);
 

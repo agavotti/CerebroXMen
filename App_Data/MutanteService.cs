@@ -186,6 +186,7 @@ namespace CerebroXMenAPI.app_data
             {
                 IGenInfo iGenInfo = new IGenInfo()
                 {
+                    ID = gen.ID,
                     Dna = gen.ADN.Split(','),
                     EsMutante = gen.EsMutante,
                     FechaAlta = gen.FechaAlta
@@ -195,6 +196,27 @@ namespace CerebroXMenAPI.app_data
             
 
             return listGenesInfo;
+        }
+
+
+
+        internal IGenInfo GetByID(int ID)
+        {
+            Gen gen = Gen.Get(_cn, ID);
+            IGenInfo iGenInfo = null;
+            if (gen != null)
+            {
+                iGenInfo = new IGenInfo()
+                {
+                    ID = gen.ID,
+                    Dna = gen.ADN.Split(','),
+                    EsMutante = gen.EsMutante,
+                    FechaAlta = gen.FechaAlta
+                };
+            }
+
+
+            return iGenInfo;
         }
     }
 }
