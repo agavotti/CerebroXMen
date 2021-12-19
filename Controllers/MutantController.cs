@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace CerebroXMenAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:3000", headers:"*", methods:"*")]
+    [EnableCors(origins: "http://localhost:3000,http://agavotti.github.io", headers:"*", methods:"*")]
     public class MutantController : ApiController
     {
         private readonly MutanteService _mutanteService;
